@@ -128,7 +128,6 @@ public class ResultFragment extends Fragment {
                         }
                         Uri uri = Utils.getUri(getActivity(), bitmap);
                         data.putExtra(ScanConstants.SCANNED_RESULT, uri);
-                        getActivity().getContentResolver().delete(uri, null, null);
                         getActivity().setResult(Activity.RESULT_OK, data);
                         original.recycle();
                         System.gc();
