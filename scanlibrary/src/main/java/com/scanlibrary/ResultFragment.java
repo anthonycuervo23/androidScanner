@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,9 +89,11 @@ public class ResultFragment extends Fragment {
         Uri uri = getUri();
         try {
             original = Utils.getBitmap(getActivity(), uri);
+            original = Utils.reduceBitmapSize(original, 921600);
             getActivity().getContentResolver().delete(uri, null, null);
             return original;
         } catch (IOException e) {
+            Log.d("FAIL", "image is to big to show in view");
             e.printStackTrace();
         }
         return null;

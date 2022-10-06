@@ -219,26 +219,12 @@ public class PickImageFragment extends Fragment {
             bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
                 Log.d("", "bitmap before compress: " + bitmap.getByteCount());
             //Scale Down the Bitmap
-                bitmap= reduceBitmapSize(bitmap, 921600);
-                Log.d("", "Bitmap after compress: " + bitmap.getByteCount());
+//                bitmap= reduceBitmapSize(bitmap, 921600);
+//                Log.d("", "Bitmap after compress: " + bitmap.getByteCount());
             }
 
             postImagePick(bitmap);
         }
-    }
-
-
-    protected Bitmap reduceBitmapSize(Bitmap bitmap, int MAX_SIZE) {
-        double ratioSquare;
-        int bitmapHeight = bitmap.getHeight();
-        int bitmapWidth = bitmap.getWidth();
-        ratioSquare = (double) (bitmapHeight * bitmapWidth / MAX_SIZE);
-        if (ratioSquare <= 1) return bitmap;
-        double ratio = Math.sqrt(ratioSquare);
-        Log.d("", "Ratio: " + ratio);
-        int requiredHeight = (int) (bitmapHeight / ratio);
-        int requiredWidth = (int) (bitmapWidth / ratio);
-        return Bitmap.createScaledBitmap(bitmap, requiredWidth, requiredHeight, true);
     }
 
     protected void postImagePick(Bitmap bitmap) {

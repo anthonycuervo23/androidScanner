@@ -87,7 +87,7 @@ public class PolygonView extends FrameLayout {
 
     private void initPaint() {
         paint = new Paint();
-        paint.setColor(getResources().getColor(R.color.blue));
+        paint.setColor(getResources().getColor(R.color.pink));
         paint.setStrokeWidth(2);
         paint.setAntiAlias(true);
     }

@@ -33,4 +33,17 @@ public class Utils {
     public static Bitmap getBitmap(Context context, Uri uri) throws IOException {
         return MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
     }
+
+    public static Bitmap reduceBitmapSize(Bitmap bitmap, int MAX_SIZE) {
+        double ratioSquare;
+        int bitmapHeight = bitmap.getHeight();
+        int bitmapWidth = bitmap.getWidth();
+        ratioSquare = (double) (bitmapHeight * bitmapWidth / MAX_SIZE);
+        if (ratioSquare <= 1) return bitmap;
+        double ratio = Math.sqrt(ratioSquare);
+        Log.d("", "Ratio: " + ratio);
+        int requiredHeight = (int) (bitmapHeight / ratio);
+        int requiredWidth = (int) (bitmapWidth / ratio);
+        return Bitmap.createScaledBitmap(bitmap, requiredWidth, requiredHeight, true);
+    }
 }
