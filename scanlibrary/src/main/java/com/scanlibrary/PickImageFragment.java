@@ -218,9 +218,6 @@ public class PickImageFragment extends Fragment {
             matrix.postRotate(rotate);
             bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
                 Log.d("", "bitmap before compress: " + bitmap.getByteCount());
-            //Scale Down the Bitmap
-//                bitmap= reduceBitmapSize(bitmap, 921600);
-//                Log.d("", "Bitmap after compress: " + bitmap.getByteCount());
             }
 
             postImagePick(bitmap);
