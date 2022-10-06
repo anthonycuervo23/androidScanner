@@ -89,7 +89,7 @@ public class ResultFragment extends Fragment {
         Uri uri = getUri();
         try {
             original = Utils.getBitmap(getActivity(), uri);
-            original = Utils.reduceBitmapSize(original,921600);
+            original = Utils.reduceBitmapSize(original,Integer.parseInt(getActivity().getIntent().getStringExtra(ScanConstants.BITMAP_LIMIT)));
             getActivity().getContentResolver().delete(uri, null, null);
             Log.d("SUCCESS", "image passed the bitmap limit.!");
             return original;
