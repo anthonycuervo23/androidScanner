@@ -8,7 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.ExifInterface;
+import androidx.exifinterface.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -160,6 +160,7 @@ public class PickImageFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("", "onActivityResult" + resultCode);
         Bitmap bitmap = null;
+
         if (resultCode == Activity.RESULT_OK) {
             try {
                 switch (requestCode) {
@@ -216,9 +217,28 @@ public class PickImageFragment extends Fragment {
             android.graphics.Matrix matrix = new android.graphics.Matrix();
             matrix.postRotate(rotate);
             bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+                Log.d("", "bitmap before compress: " + bitmap.getByteCount());
+            //Scale Down the Bitmap
+                bitmap= reduceBitmapSize(bitmap, 921600);
+                Log.d("", "Bitmap after compress: " + bitmap.getByteCount());
             }
+
             postImagePick(bitmap);
         }
+    }
+
+
+    protected Bitmap reduceBitmapSize(Bitmap bitmap, int MAX_SIZE) {
+        double ratioSquare;
+        int bitmapHeight = bitmap.getHeight();
+        int bitmapWidth = bitmap.getWidth();
+        ratioSquare = (double) (bitmapHeight * bitmapWidth / MAX_SIZE);
+        if (ratioSquare <= 1) return bitmap;
+        double ratio = Math.sqrt(ratioSquare);
+        Log.d("", "Ratio: " + ratio);
+        int requiredHeight = (int) (bitmapHeight / ratio);
+        int requiredWidth = (int) (bitmapWidth / ratio);
+        return Bitmap.createScaledBitmap(bitmap, requiredWidth, requiredHeight, true);
     }
 
     protected void postImagePick(Bitmap bitmap) {
