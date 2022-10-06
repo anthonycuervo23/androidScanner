@@ -29,9 +29,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by jhansi on 04/04/15.
- */
 public class PickImageFragment extends Fragment {
     int camorgal = 0;
     private String imagePath = "";

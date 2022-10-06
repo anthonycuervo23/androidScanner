@@ -11,9 +11,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by jhansi on 05/04/15.
- */
+
 public class Utils {
     static Date currentTime;
     private Utils() {

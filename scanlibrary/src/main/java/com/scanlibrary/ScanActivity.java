@@ -17,9 +17,6 @@ import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by jhansi on 28/03/15.
- */
 public class ScanActivity extends Activity implements IScanner, ComponentCallbacks2 {
 
     final String[] permissions = new String[]{
