@@ -20,12 +20,15 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.Nullable;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+//VIEW WHERE WE CROP THE IMAGE
 public class ScanFragment extends Fragment {
 
     private Button scanButton;
@@ -62,12 +65,9 @@ public class ScanFragment extends Fragment {
             @Override
             public void handleOnBackPressed() {
                 // Handle the back button event
-                Log.d("BACK BUTTON PRESSED!!!!!!!!");
+                Log.d("", "BACK BUTTON PRESSED!!!!!!!!");
             }
         };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
-
-        // The callback can be enabled or disabled here or in handleOnBackPressed()
     }
 
     public ScanFragment() {
