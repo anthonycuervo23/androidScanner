@@ -68,6 +68,7 @@ public class ScanFragment extends Fragment {
                 Log.d("", "BACK BUTTON PRESSED!!!!!!!!");
             }
         };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     public ScanFragment() {
