@@ -20,8 +20,8 @@ import java.util.List;
 public class ScanActivity extends Activity implements IScanner, ComponentCallbacks2 {
 
     final String[] permissions = new String[]{
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//            Manifest.permission.READ_EXTERNAL_STORAGE,
+//            Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA,
     };
 
