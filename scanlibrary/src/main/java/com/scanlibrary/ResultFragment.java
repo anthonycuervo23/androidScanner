@@ -17,6 +17,7 @@ import android.widget.ImageView;
 
 import java.io.IOException;
 
+// VIEW WHERE IMAGE IS ALREADY CROPPED AND FILTER BUTTONS ARE SHOW IN TOP BAR
 public class ResultFragment extends Fragment {
 
     private View view;

@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//THIS IS THE SQUARE WHERE WE CROP THE IMAGE, WE USE THIS INSIDE SCANFRAGMENT.JAVA
 public class PolygonView extends FrameLayout {
 
     protected Context context;

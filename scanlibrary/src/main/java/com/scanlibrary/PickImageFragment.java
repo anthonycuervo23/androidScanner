@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/// INITIAL SCREEN WHERE CAMERA AND GALLERY BUTTONS ARE SHOW IN BOTTOM BAR
 public class PickImageFragment extends Fragment {
     int camorgal = 0;
     private String imagePath = "";

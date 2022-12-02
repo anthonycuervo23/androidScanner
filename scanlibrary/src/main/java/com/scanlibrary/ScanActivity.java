@@ -20,6 +20,7 @@ import java.util.List;
 public class ScanActivity extends Activity implements IScanner, ComponentCallbacks2 {
 
     final String[] permissions = new String[]{
+            //REMOVED SO WE DONT ASK GALLERY PERMISSIONS WHEN CAMERA IS OPEN
 //            Manifest.permission.READ_EXTERNAL_STORAGE,
 //            Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA,
