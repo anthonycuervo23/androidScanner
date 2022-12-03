@@ -21,10 +21,10 @@ public class Utils {
     public static Uri getUri(Context context, Bitmap bitmap) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        Log.wtf("PATH", "before insertImage");
+        Log.d("PATH", "before insertImage");
         // String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
         String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title" + " - " + (currentTime = Calendar.getInstance().getTime()), null);
-        Log.wtf("PATH", path);
+        Log.d("PATH", path);
         return Uri.parse(path);
     }
 
