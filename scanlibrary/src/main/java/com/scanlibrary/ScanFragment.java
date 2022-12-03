@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-//VIEW WHERE WE CROP THE IMAGE
+//CONTAINER WHERE WE SHOW THE IMAGE AND THE CROP POLYGON
 public class ScanFragment extends Fragment {
 
     private Button scanButton;

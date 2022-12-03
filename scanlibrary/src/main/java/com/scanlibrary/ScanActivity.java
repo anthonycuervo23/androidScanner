@@ -40,6 +40,10 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     @Override
     public void onBackPressed() {
         Log.d("", "BACK BUTTON PRESSED!!!!!!!!");
+        //TODO: open camera
+        getFragmentManager().popBackStackImmediate();
+        PickImageFragment fragment = new PickImageFragment();
+        fragment.openCamera();
     }
 
     private boolean checkPermissions() {
