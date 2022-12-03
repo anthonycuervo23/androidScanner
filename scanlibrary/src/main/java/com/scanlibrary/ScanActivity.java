@@ -55,7 +55,7 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     public void onBackPressed() {
         Log.d("", "BACK BUTTON PRESSED!!!!!!!!");
         Log.d("BACK", String.valueOf(getFragmentManager().getBackStackEntryCount()));
-        if (getFragmentManager().getBackStackEntryCount() > 0) {
+        if (getFragmentManager().getBackStackEntryCount() > 1) {
             // If there are back-stack entries, leave the FragmentActivity
             // implementation take care of them.
             super.onBackPressed();
