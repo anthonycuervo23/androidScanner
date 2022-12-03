@@ -2,10 +2,8 @@ package com.scanlibrary;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.ComponentCallbacks2;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
@@ -33,6 +31,7 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     int camorgal = 0;
     private String imagePath = "";
     private Uri fileUri;
+    private static final int MY_CAMERA_REQUEST_CODE = 100;
     final String[] permissions = new String[]{
             //REMOVED SO WE DONT ASK GALLERY PERMISSIONS WHEN CAMERA IS OPEN
 //            Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -53,15 +52,19 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
 
     @Override
     public void onBackPressed() {
-        Log.d("", "BACK BUTTON PRESSED!!!!!!!!");
-        Log.d("BACK", String.valueOf(getFragmentManager().getBackStackEntryCount()));
+        Log.d("BACK", "Back button pressed");
+        Log.d("BACK", "back stack entry: " + String.valueOf(getFragmentManager().getBackStackEntryCount()));
         if (getFragmentManager().getBackStackEntryCount() > 1) {
             // If there are back-stack entries, leave the FragmentActivity
             // implementation take care of them.
             super.onBackPressed();
         } else {
-            // Otherwise, exit scanner
-            this.finish();
+            // Otherwise, open camera or gallery again
+            if (isIntentPreferenceSet()) {
+                handleIntentPreference();
+            } else {
+                this.finish();
+            }
         }
     }
 
@@ -98,6 +101,7 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
         } else {
             this.finish();
         }
+        //THIS IS TO SHOW PICKIMAGEFRAGMENT (CURRENTLY WE DON'T WANT IT)
 //        PickImageFragment fragment = new PickImageFragment();
 //        Bundle bundle = new Bundle();
 //        bundle.putInt(ScanConstants.OPEN_INTENT_PREFERENCE, getPreferenceContent());
@@ -143,7 +147,7 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
 
     public void openCamera() {
         camorgal = 0;
-//        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
             File file = createImageFile();
             boolean isDirectoryCreated = file.getParentFile().mkdirs();
@@ -159,9 +163,9 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, tempFileUri);
             }
             startActivityForResult(cameraIntent, ScanConstants.START_CAMERA_REQUEST_CODE);
-//        } else {
-//            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
-//        }
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
+        }
     }
 
     @Override
