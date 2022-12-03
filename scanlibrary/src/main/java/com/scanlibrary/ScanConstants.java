@@ -19,6 +19,7 @@ public class ScanConstants {
     // For passing dynamic labels
     public final static String SCAN_NEXT_TEXT = "scanNextText";
     public final static String SCAN_SAVE_TEXT = "scanSaveText";
+    public final static String SCAN_BACK_TEXT = "scanBackText";
     public final static String SCAN_ROTATE_LEFT_TEXT = "scanRotateLeftText";
     public final static String SCAN_ROTATE_RIGHT_TEXT = "scanRotateRightText";
     public final static String SCAN_BNW_TEXT = "scanBNWText";

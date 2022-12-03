@@ -80,24 +80,52 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/doneButton"
-        android:layout_width="fill_parent"
+
+    <LinearLayout
+        android:id="@+id/doneBottomBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/bottom_background_color"
-        android:orientation="horizontal"
-        android:padding="@dimen/bottom_bar_padding"
-        android:text="@string/done" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/backResultButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/pink"
+            android:orientation="horizontal"
+            android:padding="@dimen/bottom_bar_padding"
+            android:textColor="#ffffff"
+            android:text="@string/label_back"></Button>
+
+        <Button
+            android:id="@+id/doneButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/bottom_background_color"
+            android:orientation="horizontal"
+            android:textColor="#ffffff"
+            android:padding="@dimen/bottom_bar_padding"
+            android:text="@string/done" />
+
+    </LinearLayout>
+
 
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/doneButton"
+        android:layout_above="@id/doneBottomBar"
         android:layout_below="@id/topBar"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/scanPadding">
+        android:layout_marginStart="@dimen/scanPadding"
+        android:layout_marginTop="@dimen/scanPadding"
+        android:layout_marginEnd="@dimen/scanPadding"
+        android:layout_marginBottom="@dimen/scanPadding">
 
         <ImageView
             android:id="@+id/scannedImage"

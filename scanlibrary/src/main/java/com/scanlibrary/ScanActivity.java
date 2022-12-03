@@ -118,7 +118,7 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
         return preference != 0;
     }
 
-    private void handleIntentPreference() {
+    public void handleIntentPreference() {
         int preference = getPreferenceContent();
         if (preference == ScanConstants.OPEN_CAMERA) {
             openCamera();

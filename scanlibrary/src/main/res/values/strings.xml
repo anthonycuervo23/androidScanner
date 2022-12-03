@@ -17,4 +17,5 @@
     <string name="label_magic">Magic</string>
     <string name="label_b_amp_w"><![CDATA[B & W]]></string>
     <string name="label_org">Org</string>
+    <string name="label_back">Back</string>
 </resources>

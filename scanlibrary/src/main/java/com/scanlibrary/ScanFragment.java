@@ -32,6 +32,7 @@ import java.util.Map;
 public class ScanFragment extends Fragment {
 
     private Button scanButton;
+    private Button backButton;
     private ImageView sourceImageView;
     private FrameLayout sourceFrame;
     private PolygonView polygonView;
@@ -62,6 +63,11 @@ public class ScanFragment extends Fragment {
 
     private void init() {
         sourceImageView = (ImageView) view.findViewById(R.id.sourceImageView);
+        backButton = (Button) view.findViewById(R.id.backButton);
+        if (getActivity().getIntent().getStringExtra(ScanConstants.SCAN_BACK_TEXT) != null) {
+            backButton.setText(getActivity().getIntent().getStringExtra(ScanConstants.SCAN_BACK_TEXT));
+        }
+        backButton.setOnClickListener(new BackButtonClickListener());
         scanButton = (Button) view.findViewById(R.id.scanButton);
         if (getActivity().getIntent().getStringExtra(ScanConstants.SCAN_NEXT_TEXT) != null) {
             scanButton.setText(getActivity().getIntent().getStringExtra(ScanConstants.SCAN_NEXT_TEXT));
@@ -156,6 +162,14 @@ public class ScanFragment extends Fragment {
             orderedPoints = getOutlinePoints(tempBitmap);
         }
         return orderedPoints;
+    }
+
+    private class BackButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Log.d("", "going back = 1");
+            getActivity().onBackPressed();
+        }
     }
 
     private class ScanButtonClickListener implements View.OnClickListener {

@@ -23,6 +23,7 @@ public class ResultFragment extends Fragment {
     private View view;
     private ImageView scannedImageView;
     private Button doneButton;
+    private Button backButton;
     private Bitmap original;
     private Button originalButton;
     private Button MagicColorButton;
@@ -76,6 +77,12 @@ public class ResultFragment extends Fragment {
         transformed = bitmap;
         rotoriginal = bitmap;
         setScannedImage(bitmap);
+        backButton = (Button) view.findViewById(R.id.backResultButton);
+        if(getActivity().getIntent().getStringExtra(ScanConstants.SCAN_BACK_TEXT) != null){
+            backButton.setText(getActivity().getIntent().getStringExtra(ScanConstants.SCAN_BACK_TEXT));
+        }
+        backButton.setOnClickListener(new BackButtonClickListener());
+
         doneButton = (Button) view.findViewById(R.id.doneButton);
         if(getActivity().getIntent().getStringExtra(ScanConstants.SCAN_SAVE_TEXT) != null){
             doneButton.setText(getActivity().getIntent().getStringExtra(ScanConstants.SCAN_SAVE_TEXT));
@@ -105,6 +112,14 @@ public class ResultFragment extends Fragment {
 
     public void setScannedImage(Bitmap scannedImage) {
         scannedImageView.setImageBitmap(scannedImage);
+    }
+
+    private class BackButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Log.d("", "going back = 2");
+            getActivity().onBackPressed();
+        }
     }
 
     private class DoneButtonClickListener implements View.OnClickListener {
