@@ -59,7 +59,6 @@ public class PickImageFragment extends Fragment {
     private void init() {
         cameraButton = (ImageButton) view.findViewById(R.id.cameraButton);
         cameraButton.setOnClickListener(new CameraButtonClickListener());
-        cameraButton.performClick();
         galleryButton = (ImageButton) view.findViewById(R.id.selectButton);
         galleryButton.setOnClickListener(new GalleryClickListener());
         imagePath = getActivity().getApplicationContext().getExternalCacheDir().getPath() + "/scanSample";
